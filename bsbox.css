@@ -1,0 +1,10 @@
+.box-info,.box-danger{color:#fff;}
+.box-info{background:#31b8e2}
+.box-danger{background: #e23f31}
+.box-warning{background:#e29431}
+.box-success{background:#11bd78}
+.bsbox-notif-container{position:fixed;min-width:300px;z-index:99999;padding:10px;}
+.top{top:0}
+.bottom{bottom:0}
+.right{right:0;}
+.left{left:0;}
