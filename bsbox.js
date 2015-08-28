@@ -1,4 +1,4 @@
-(function(w,$){
+(function(w,$){'use strict';
 	var defaults = {
 
 		dialog:{
