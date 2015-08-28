@@ -19,6 +19,10 @@
 		}
 	}
 
+	var globals = {
+		NotifContainerClass: '.bsbox-notif-container'
+	};
+
 	var template = {
 		dialog: function(content){
 			var t = '<div id="bsboxDialog" class="modal fade">'+
@@ -71,10 +75,28 @@
 
 	}
 	var Notification = function(options){
-		if( !$('.bsbox-notif-container').length ){
-			var $container = $('<div class="bsbox-notif-container"></div>').addClass(options.location);
-			$('body').append($container);
+
+		var _getContainer = function(location){
+			if(location){
+				location = '.'+ location.replace(/ /gi,'.');
+			}
+
+			var className = globals.NotifContainerClass+location;
+
+			if( $(className).length ){
+				return $(className);
+			}else{
+				var $container  = $('<div class="'+ className.replace(/\./gi,' ') + '"></div>');
+				$('body').append($container);
+				return $container;
+			}
+
+			
 		}
+		
+
+		var $container = _getContainer(options.location);
+
 		var $t = template.notication[options.template](options);
 
 		if(!options.sticky)
@@ -82,7 +104,7 @@
 		if(options.closeOnClick)
 			$t.click(function(){Notification.close($(this),options)});
 
-		$('.bsbox-notif-container').append($t);
+		$container.append($t);
 		return $t.data('bsboxNotif.options',options)[options.transitionIn](); //returns the template $element
 	};
 
