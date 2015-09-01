@@ -1,9 +1,22 @@
-(function(w,$){'use strict';
+/*
+bsbox 2.0.0.0
+
+required: jQuery
+Author: Cres Jie Labasano
+Email: cresjie@gmail.com
+*/
+(function(window,$){'use strict';
+
+	if(!$){
+		console.error('jQuery is required');
+		return 0;
+	}
+
 	var defaults = {
 
 		dialog:{
 			title:'Message',
-			type:'info'
+			type:''
 		},
 		notification:{
 			sticky:false,
@@ -25,16 +38,24 @@
 
 	var template = {
 		dialog: function(content){
+			var head ='',message='';
+			if(content.title){
+				head = '<div class="modal-header box-header box-'+content.type+'" >'+
+				                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+				               '<h4 class="modal-title">'+content.title+'</h4>' +
+				            '</div>';
+				
+			}
+
+			if( content.message ){
+				message = '<div class="modal-body">'+
+				                content.message +
+				            '</div>';
+			}
 			var t = '<div id="bsboxDialog" class="modal fade">'+
 				   	'<div class="modal-dialog">'+
-				        '<div class="modal-content">'+
-				            '<div class="modal-header box-'+content.type+'">'+
-				                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
-				                '<h4 class="modal-title">'+content.title+'</h4>'+
-				            '</div>'+
-				            '<div class="modal-body">'+
-				                content.message +
-				            '</div>'+
+				        '<div class="modal-content">'+head+
+				           message +
 				             
 				        '</div>'+
 				     '</div>'+
@@ -111,20 +132,29 @@
 	Notification.close = function($el,options){
 		$el[options.transitionOut]({complete:function(){this.remove()}})
 	}
-	$.bsboxDialog = function(options){
-		var options = $.extend({},defaults.dialog,options);
-		var $dialog = template.dialog(options).on('hidden.bs.modal',function(){this.remove()});
 
-		$('body').append($dialog);
-		return $dialog.modal('show');		
-	}
-	$.bsboxNotif = function(options){
-		options = $.extend({},defaults.notification,options);
+	
+	window.bsbox = {
+		dialog:function(options){
+			var options = options.constructor == Object ? $.extend({},defaults.dialog,options) : $.extend({},defaults.dialog,{message:options}) ;
+			var $dialog = template.dialog(options).on('hidden.bs.modal',function(){this.remove()});
 
-		return Notification(options);
-	}
+			$('body').append($dialog);
+			return $dialog.modal('show');		
+		},
+		notif:function(options){
+			options = options.constructor == Object ? $.extend({},defaults.notification,options) : $.extend({},defaults.notification,{message:options});
 
-	$.bsboxNotif.close = function($el){
+			return Notification(options);
+		}
+	};
+
+	window.bsbox.notif.close = function($el){
 		Notification.close($el,$el.data('bsboxNotif.options'));
+	};
+	window.bsbox.notif.addTemplate = function(name,callback){
+		template.notification[name] = callback;
+		return this;
 	}
+
 })(window,jQuery);
