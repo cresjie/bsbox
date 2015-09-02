@@ -94,8 +94,9 @@ Basic Usage
   });
 ```
 
- Extension Dialog Module (bsbox-dialog-module.js)
- ==============
+# Extension Dialog Module (bsbox-dialog-module.js)
+ --------------------------
+
 > wrapper for native javascript alert, confirm, prompt
 
 # Alert
