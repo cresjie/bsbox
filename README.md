@@ -49,10 +49,10 @@ Basic Usage
 ```
 **Working with Dialog Buttons**
  **Options** 
-*text - the text for the button
-*class - class attribute for the button
-*attr - (object) attributes for the button
-*on- (object) on events for the button
+* text - the text for the button
+* class - class attribute for the button
+* attr - (object) attributes for the button
+* on- (object) on events for the button
 
 **Sample**
 ```javascript
