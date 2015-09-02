@@ -73,23 +73,23 @@ Basic Usage
     message: 'Unknow Error Occured',
     type: 'danger',
     buttons:[
-      {
-        text:'OK',
-	attr:{
-		'data-dismiss':"modal"
+      	{
+	        text:'OK',
+		attr:{
+			'data-dismiss':"modal"
+		},
+		class: 'btn-primary'
 	},
-	class: 'btn-primary'
-      },
-      {
-        text: 'Cancel',
-        attr:{
-		'data-dismiss':"modal"
-	},
-	class: 'btn-danger',
-	on: {
-	  click: function(e){ alert("you press cancel") }
-	}
-      }
+	{
+	        text: 'Cancel',
+	        attr:{
+			'data-dismiss':"modal"
+		},
+		class: 'btn-danger',
+		on: {
+		  click: function(e){ alert("you press cancel") }
+		}
+      	}
     ]
   });
 ```
