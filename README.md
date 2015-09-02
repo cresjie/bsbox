@@ -75,20 +75,20 @@ Basic Usage
     buttons:[
       {
         text:'OK',
-				attr:{
-					'data-dismiss':"modal"
-				},
-				class: 'btn-primary'
+	attr:{
+		'data-dismiss':"modal"
+	},
+	class: 'btn-primary'
       },
       {
         text: 'Cancel',
         attr:{
-					'data-dismiss':"modal"
-				},
-				class: 'btn-danger',
-				on: {
-				  click: function(e){ alert("you press cancel") }
-				}
+		'data-dismiss':"modal"
+	},
+	class: 'btn-danger',
+	on: {
+	  click: function(e){ alert("you press cancel") }
+	}
       }
     ]
   });
