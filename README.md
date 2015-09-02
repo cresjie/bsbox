@@ -21,7 +21,7 @@ Basic Usage
 **Options & Defaults**
 ```javascript
 
- sticky: false
+ sticky: false // timeout will be disable and the notification will remain on the screen unless it was closed by the user
  timeout: 5000,
  type: 'success', //danger,warning,info
  closeBtn: true, //displays "x" button in the notification
