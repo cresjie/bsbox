@@ -93,3 +93,39 @@ Basic Usage
     ]
   });
 ```
+
+ Extension Dialog Module (bsbox-dialog-module.js)
+ ==============
+> wrapper for native javascript alert, confirm, prompt
+
+# Alert
+* bsbox.alert(message, callback)
+
+```javascript
+	bsbox.alert("Hello World");
+	bsbox.alert("Hello World",function(){ 
+		alert("its done");
+	});
+```
+
+# Confirm
+* bsbox.confirm(message, callback)
+```javascript
+	bsbox.confirm("Are you sure you want to quit?",function(response){ //response is a boolean value
+		if(response){
+			bsbox.notif("You quit");
+		}else{
+			bsbox.notif("You rock");
+		}
+	});
+```
+
+# Prompt
+* bsbox.prompt(message, callback)
+```javascript
+	bsbox.prompt("Whats your name",function(response){ //response - returns the value of the input field
+		bsbox.notif("Welcome aboard "+response);
+	});
+
+```
+
