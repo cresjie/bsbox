@@ -10,9 +10,11 @@ Basic Usage
 
 # Notification
 ```javascript
+//it also returns a jQuery element 
   bsbox.notif("Hello World");
 ```
 ```javascript
+//it also returns a jQuery element 
   bsbox.notif({message:'Error Occured',type:'danger'});
 ```
 
@@ -30,13 +32,23 @@ Basic Usage
  location: 'bottom left'
  
 ```
+**Adding Notification Template**
+* addTemplate(name, function) - function should return jQuery element of the container
+```javascript
+	bsbox.notif.addTemplate('custom-template',function(options){
+		var $template = $('<div class="custom-container">'+ options.message + '</div>');
+		return $template;
+	});
+```
 
 #Dialog
 ```javascript
+//it also returns a jQuery element 
   bsbox.dialog("Hello world");
 ```
 
 ```javascript
+//it also returns a jQuery element 
   bsbox.dialog({title:'Error',message: 'Unknown Error Occured',type:'danger'});
 ```
 
