@@ -1,6 +1,6 @@
 /*
 
-BsBox dialog module
+BsBox dialog module v1.0.1.0
 
 required: bsbox 2.0.0.0 and jQuery
 Author: Cres Jie Labasano
@@ -15,8 +15,8 @@ Email: cresjie@gmail.com
 
 	//extending bsbox library
 	
-	bsbox.alert = function(message,callback){
-		var $dialog = bsbox.dialog({message:message,title:'',
+	bsbox.alert = function(opt,callback){
+		var options = {title:'',
 			buttons:[
 				{
 					text:'OK',
@@ -26,15 +26,23 @@ Email: cresjie@gmail.com
 					class: 'btn-primary'
 				}
 			]
-		});
+		} ;
+
+		if(opt.constructor == String) options.message = opt;
+		else options = $.extend(options, opt);
+
+		console.log(options);
+
+
+		var $dialog = bsbox.dialog(options);
 
 		$dialog.on('hidden.bs.modal',callback);
 		return $dialog;
 	};
 
-	bsbox.confirm = function(message,callback){
-		var result  = false;
-		var $dialog = bsbox.dialog({title:message,message:'',
+	bsbox.confirm = function(opt,callback){
+		var options = {
+			message:'',
 			buttons:[
 				{
 					text:'OK',
@@ -55,15 +63,20 @@ Email: cresjie@gmail.com
 
 				}
 			]
-		});
+		};
+		if( opt.constructor == String ) options.title = opt;
+		else options = $.extend(options, opt);
+
+		var result  = false;
+		var $dialog = bsbox.dialog(options);
 		if(callback)
 			$dialog.on('hidden.bs.modal',function(e){callback.call(this,result)});
 		return $dialog;
 	}
 
-	bsbox.prompt = function(message,callback){
-		var result;
-		var $dialog = bsbox.dialog({title:message,message:'<input type="text" class="form-control" id="bsbox_prompt_input">',
+	bsbox.prompt = function(opt,callback){
+		var options = {
+			message:'<input type="text" class="form-control" id="bsbox_prompt_input">',
 			buttons:[
 				{
 					text:'OK',
@@ -85,7 +98,13 @@ Email: cresjie@gmail.com
 
 				}
 			]
-		});
+		};
+
+		if( opt.constructor == String) options.title = opt;
+		else options = $.extend(options, opt);
+
+		var result;
+		var $dialog = bsbox.dialog(options);
 		if( callback )
 			$dialog.on('hidden.bs.modal',function(e){callback.call(this,result)});
 		return $dialog;
