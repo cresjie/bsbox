@@ -1,5 +1,5 @@
 /*
-bsbox 2.0.0.0
+bsbox 2.0.1.0
 
 required: jQuery
 Author: Cres Jie Labasano
@@ -48,7 +48,7 @@ Email: cresjie@gmail.com
 			}
 
 			if( content.message ){
-				message = '<div class="modal-body">'+
+				message = '<div class="modal-body box-'+( content.type && !content.title ? content.type : '' )+'">'+
 				                content.message +
 				            '</div>';
 			}
@@ -146,15 +146,21 @@ Email: cresjie@gmail.com
 			options = options.constructor == Object ? $.extend({},defaults.notification,options) : $.extend({},defaults.notification,{message:options});
 
 			return Notification(options);
-		}
+		},
+		version: '2.0.1.0'
 	};
 
-	window.bsbox.notif.close = function($el){
-		Notification.close($el,$el.data('bsboxNotif.options'));
-	};
-	window.bsbox.notif.addTemplate = function(name,callback){
-		template.notification[name] = callback;
-		return this;
-	}
+	/**
+	* Global method for bsbox.notif
+	*/
+	$.extend(bsbox.notif,{
+		close: function($el){
+			Notification.close($el,$el.data('bsboxNotif.options'));
+		},
+		addTemplate: function(name,callback){
+			template.notification[name] = callback;
+			return this;
+		}
+	})
 
 })(window,jQuery);
