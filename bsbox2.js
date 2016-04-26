@@ -63,7 +63,7 @@ Email: cresjie@gmail.com
 			var $t = $(t);
 			if(content.buttons){
 				$t.find('.modal-content').append('<div class="modal-footer"></div>');
-				for(var i in content.buttons){
+				for(var i = 0; i< content.buttons.length;i++) {
 					var button = content.buttons[i],
 						$button = $('<button class="btn"></button>')
 									.html(button.text)
