@@ -9,6 +9,7 @@
 		"notification"
 	],
 	"version": "2.0.1.0.0",
+	"moduleType": "globals",
 	"license": "MIT",
 	"main": [
 		"bsbox.css",
