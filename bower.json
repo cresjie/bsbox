@@ -1,0 +1,14 @@
+{
+	"name": "bsbox",
+	"version": "2.0.1.0.0",
+	"license": "MIT",
+	"main": [
+		"bsbox.css",
+		"bsbox2.js",
+		"bsbox-dialog-module.js"
+	],
+	"ignore": [],
+	"dependencies": {
+		"bootstrap": "^2.0"
+	}	
+}
