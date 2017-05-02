@@ -31,8 +31,6 @@ Email: cresjie@gmail.com
 		if(opt.constructor == String) options.message = opt;
 		else options = $.extend(options, opt);
 
-		console.log(options);
-
 
 		var $dialog = bsbox.dialog(options);
 

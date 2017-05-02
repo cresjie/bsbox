@@ -1,9 +1,8 @@
 /*
-bsbox 2.0.1.0
-
-required: jQuery
-Author: Cres Jie Labasano
-Email: cresjie@gmail.com
+ * bsbox 2.0.1.0
+ * required: jQuery
+ * Author: Cres Jie Labasano
+ * Email: cresjie@gmail.com
 */
 (function(window,$){'use strict';
 
