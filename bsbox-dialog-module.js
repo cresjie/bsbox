@@ -39,11 +39,14 @@ Email: cresjie@gmail.com
 	};
 
 	bsbox.confirm = function(opt,callback){
-		var options = {
+		var confirmText = opt && opt.confirmText ? opt.confirmText : 'Ok',
+			cancelText = opt && opt.cancelText ? opt.cancelText : 'Cancel',
+		 	options = {
 			message:'',
+			confirmText: 'Confirm text',
 			buttons:[
 				{
-					text:'OK',
+					text: confirmText,
 					attr:{
 						'data-dismiss':"modal"
 					},
@@ -53,7 +56,7 @@ Email: cresjie@gmail.com
 					}
 				},
 				{
-					text:'Cancel',
+					text: cancelText,
 					attr:{
 						'data-dismiss':"modal"
 					},
